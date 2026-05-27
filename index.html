@@ -121,6 +121,7 @@ const people = [
 {
     staff:"208582",
     fullname:"ปุษยา บัวทุ่ง",
+    password:"1234",
     nickname:"พลอย",
     phone:"0952534448",
     plate:"5ขฏ2585",
@@ -203,6 +204,20 @@ function loadPerson(){
 const index=document.getElementById("personSelect").value;
 
 const p=people[index];
+    
+if(p.password){
+
+const input=prompt("กรอกรหัสผ่าน");
+
+if(input !== p.password){
+
+alert("รหัสไม่ถูกต้อง");
+
+return;
+
+}
+
+}
 
 document.getElementById("info").innerHTML=`
 
