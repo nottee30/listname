@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipper Info</title>
+
+<style>
+body{
+    background:#121212;
+    color:white;
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+select{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#1f1f1f;
+    color:white;
+    font-size:16px;
+    margin-bottom:20px;
+}
+
+.card{
+    background:#1f1f1f;
+    padding:15px;
+    border-radius:14px;
+    margin-bottom:15px;
+}
+
+.label{
+    color:#aaa;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+.value{
+    background:#2d2d2d;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:10px;
+    word-break:break-word;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#00c853;
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+}
+
+button:active{
+    transform:scale(0.98);
+}
+</style>
+</head>
+
+<body>
+
+<h1>📋 Shipper Info</h1>
+
+<select id="personSelect" onchange="loadPerson()">
+    <option value="0">น๊อต</option>
+    <option value="1">วุฒิ</option>
+</select>
+
+<div id="info"></div>
+
+<script>
+
+const people = [
+
+{
+    staff:"207242",
+    fullname:"ณัฐนันท์ พันธุ์บุรี",
+    nickname:"น๊อต",
+    phone:"0838132424",
+    plate:"5359",
+    position:"2W Shipper",
+    hub:"AKRET-DD",
+    zone:"บางซื่อ",
+    basket:"B41"
+},
+
+{
+    staff:"218913",
+    fullname:"สุรวุฒิ จุ่นหัวโทน",
+    nickname:"วุฒิ",
+    phone:"0952347032",
+    plate:"5ขภ7070",
+    position:"2W Shipper",
+    hub:"AKRET-DD",
+    zone:"บางซื่อ",
+    basket:"B42"
+}
+
+];
+
+function createField(label,value){
+
+return `
+<div class="card">
+    <div class="label">${label}</div>
+
+    <div class="value">${value}</div>
+
+    <button onclick="copyText('${value}',this)">
+        คัดลอก
+    </button>
+</div>
+`;
+
+}
+
+function loadPerson(){
+
+const index=document.getElementById("personSelect").value;
+
+const p=people[index];
+
+document.getElementById("info").innerHTML=`
+
+${createField("Staff Id",p.staff)}
+${createField("ชื่อ สกุล",p.fullname)}
+${createField("ชื่อเล่น",p.nickname)}
+${createField("เบอร์โทร",p.phone)}
+${createField("ทะเบียนรถ",p.plate)}
+${createField("ตำแหน่ง",p.position)}
+${createField("Hub",p.hub)}
+${createField("โซน",p.zone)}
+${createField("โซนตะกร้า",p.basket)}
+
+`;
+
+}
+
+function copyText(text,btn){
+
+navigator.clipboard.writeText(text);
+
+const old=btn.innerText;
+
+btn.innerText="✓ คัดลอกแล้ว";
+
+setTimeout(()=>{
+btn.innerText=old;
+},1500);
+
+}
+
+loadPerson();
+
+</script>
+
+</body>
+</html>
