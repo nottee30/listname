@@ -72,7 +72,7 @@ button:active{
 
 <h1>📋 Shipper Info</h1>
 
-<select id="personSelect" onchange="loadPerson()">
+<select id="personSelect" onchange="loadPerson()"></select>
     <option value="0">น๊อต</option>
     <option value="1">เต๋า</option>
     <option value="2">แบงค์</option>
@@ -151,6 +151,24 @@ return `
 
 }
 
+function generateMenu(){
+
+const select=document.getElementById("personSelect");
+
+select.innerHTML="";
+
+people.forEach((person,index)=>{
+
+select.innerHTML += `
+<option value="${index}">
+${person.nickname}
+</option>
+`;
+
+});
+
+}
+
 function loadPerson(){
 
 const index=document.getElementById("personSelect").value;
@@ -187,6 +205,7 @@ btn.innerText=old;
 
 }
 
+generateMenu();
 loadPerson();
 
 </script>
