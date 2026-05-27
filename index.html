@@ -196,7 +196,7 @@ select.innerHTML="";
 
 people.forEach((person,index)=>{
 
-select.innerHTML += `<option value="${index}">${person.nickname}</option>`;
+select.innerHTML += `<option value="${index}">${person.hiddenName || person.nickname}</option>`;
 
 });
 
