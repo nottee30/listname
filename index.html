@@ -72,7 +72,9 @@ button:active{
 
 <h1>📋 Shipper Info</h1>
 
+<div>
 <select id="personSelect" onchange="loadPerson()"></select>
+</div>
 
 <div id="info"></div>
 
@@ -154,11 +156,7 @@ select.innerHTML="";
 
 people.forEach((person,index)=>{
 
-select.innerHTML += `
-<option value="${index}">
-${person.nickname}
-</option>
-`;
+select.innerHTML += `<option value="${index}">${person.nickname}</option>`;
 
 });
 
